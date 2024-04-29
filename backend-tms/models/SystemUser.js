@@ -8,4 +8,3 @@ const SysUserSchema=new Schema({
 
 const SystemUser=mongoose.model('SystemUser',SysUserSchema);
 module.exports=SystemUser;
-
