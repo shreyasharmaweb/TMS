@@ -18,7 +18,9 @@ export default function OrganisationUser() {
   }
 
   return (
+    
     <div>
+        <h1>Select Any Organisation</h1>
       {org.map((e, i) => (
         <div className='Org' key={i}>
           <h2>{e.name}</h2>

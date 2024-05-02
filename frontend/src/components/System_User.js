@@ -17,7 +17,8 @@ export default function System_User() {
                 <input type='email' placeholder='Enter your email' />
                 <input type='text' placeholder='Enter otp' value={otp} onChange={(e) => setOtp(e.target.value)}></input>
                 <button>OTP</button>
-                <NavLink to='/Orgs'>Submit</NavLink>
+                <NavLink to='/Orgs'>View Organisations</NavLink>
+                <NavLink to='/Allusers'>View Users</NavLink>
             </div>
         </div>
     );

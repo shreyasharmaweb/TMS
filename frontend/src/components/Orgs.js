@@ -6,15 +6,18 @@ import '../css/Org.css';
 export default function Orgs() {
 
   const[data,Setdata]=useState([]);
+  
   const navigate=useNavigate();
-
+  
+  
   useEffect(()=>{
     axios.get('http://localhost:3001/org/Allorg')
     .then(res=>Setdata(res.data))
-    .catch(err=>console.log('error',err));
-  },[])
+    .catch(err=>console.log('error',err));    
+  },[data])
 
 
+  
   // const organizationsData = [
   //   {
   //     "org_name": "Organization A",
@@ -47,21 +50,32 @@ export default function Orgs() {
   // ];
   
   const deletee=async (key)=>{
-    console.log("J")
+    // console.log("J")
     try {
       const res = await fetch(`http://127.0.0.1:3001/org/delete/${key}`, {
         method: "DELETE"
+        
       })
       
       // console.log(res)
     } catch (error) {  
-    }    
+
+    } 
+    
   }
+
+  const Add = (name) => {
+    navigate('/Userorg', { state: { orgName: name } });
+  }
+  
 
   return (
     <div >
-        <NavLink to='/Orgnew'>ADD</NavLink>
-
+      <h1>Organisations</h1>
+        <div className='Orge'>
+          <h2>Adding more Organisations </h2>
+        <NavLink className='nav' to='/Orgnew'>ADD</NavLink>
+        </div>
       {data.map((e,i) => (
         <div className='Org'>
         <li key={i}>
@@ -71,6 +85,9 @@ export default function Orgs() {
           
           </ul>
           <button onClick={()=>deletee(e._id)}>Deactivate</button>
+          <br/>
+          <button onClick={() => Add(e._id)}>Users</button>
+         
         </li>
         </div>
       ))}

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Userform = () => {
   const { key } = useParams();
   const navigate = useNavigate();
-
+  const [org,Setorg]=useState('');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -16,13 +17,16 @@ const Userform = () => {
 
   useEffect(() => {
     console.log('Key:', key);
+    Setorg(key);
   }, [key]);
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
+    console.log(org);
     try {
       const response = await axios.post("http://localhost:3001/orguser/signup", {
         key,
+        organisation:org, 
         email_id:email,
         first_name: firstName,
         last_name: lastName,
@@ -30,6 +34,7 @@ const Userform = () => {
         org_join_date: orgJoinDate
       });
       console.log("done", response);
+      navigate('/');
     } catch (error) {
       console.error("Error:", error);
     }
