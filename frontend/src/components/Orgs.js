@@ -1,11 +1,12 @@
 import React,{useEffect, useState} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink ,useNavigate} from 'react-router-dom';
 import OrgNew from './OrgNew';
 import axios from 'axios';
+import '../css/Org.css';
 export default function Orgs() {
 
   const[data,Setdata]=useState([]);
-
+  const navigate=useNavigate();
 
   useEffect(()=>{
     axios.get('http://localhost:3001/org/Allorg')
@@ -44,6 +45,18 @@ export default function Orgs() {
   //     ]
   //   }
   // ];
+  
+  const deletee=async (key)=>{
+    console.log("J")
+    try {
+      const res = await fetch(`http://127.0.0.1:3001/org/delete/${key}`, {
+        method: "DELETE"
+      })
+      
+      // console.log(res)
+    } catch (error) {  
+    }    
+  }
 
   return (
     <div >
@@ -55,11 +68,9 @@ export default function Orgs() {
           <h2>{e.name}</h2>
           <h2>{e.org_name}</h2>
           <ul>
-            {/* {e.users.map((user) => (
-              <li key={user.user_id}>{user.name}</li>
-            ))} */}
+          
           </ul>
-          <button>Deactivate</button>
+          <button onClick={()=>deletee(e._id)}>Deactivate</button>
         </li>
         </div>
       ))}

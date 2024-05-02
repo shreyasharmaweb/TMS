@@ -7,6 +7,12 @@ app.post('/signup',async(req,res)=>{
     await Org.save();
     res.status(201).json(Org);
 });
+app.post('/orguser',async(req,res)=>{
+   const {org_name,name}=req.body;
+   const Org=new Organisation({org_name,name,user});
+   await Org.save();
+   res.status(201).json(Org);
+});
 app.get('/Allorg',async(req,res)=>{
      try{
         
@@ -18,4 +24,14 @@ app.get('/Allorg',async(req,res)=>{
         res.status(500).json({error:'internal server error'});
      }
 });
+app.delete(('/delete/:org_name'),async(req,res)=>{
+   const {org_name}=req.params;
+   console.log(org_name)
+   const deleteorg=await Organisation.findByIdAndDelete(org_name);
+   if(deleteorg){
+      res.status(200).json({message:'Data deleted'});
+   } else {
+      res.status(404).json({ error: 'Data not found' });
+  }
+})
 module.exports=app;

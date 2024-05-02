@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 var Schema = mongoose.Schema; 
 
 const SysUserSchema=new Schema({
-    emai: String,
+    email:String,
     otp: String,
 });
 

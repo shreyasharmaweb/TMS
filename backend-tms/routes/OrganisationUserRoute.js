@@ -7,4 +7,15 @@ app.post("/signup", async (req, res) => {
     await newOrgUser.save();
     res.status(201).json(newOrgUser);
 });
+app.get("/Allusers",async(req,res)=>{
+    console.log("HEYY")
+    try{
+        const org=await OrganisationUser.find({});
+        // console.log(org)
+        res.status(200).json(org);
+    }catch(err){ 
+        console.log('error',err);
+        res.status(500).json({error:'internal server error'});
+    }
+});
 module.exports=app;
