@@ -6,6 +6,7 @@ import OrgNew from "./components/OrgNew";
 import Userform from "./components/Userform";
 import AllUsers from "./components/AllUsers";
 import UserOrg from "./components/UserOrg";
+import TMS from "./components/TMS";
 import OrganisationUser from "./components/OrganisationUser";
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Userform/:key" element={<Userform />}/>
         <Route  path="/Allusers" element={<AllUsers />}/>
         <Route  path="/UserOrg/:id" element={<UserOrg />}/>
+        <Route  path="/tms/:id" element={<TMS/>}/>
       </Routes>
     </Router>
     

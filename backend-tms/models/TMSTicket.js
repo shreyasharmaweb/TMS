@@ -8,9 +8,9 @@ const TMSTicketSchema=new Schema({
     assignee:String,
     reporter:String,
     status:String,
-    created_date:String,
-    updated_date:String,
-    due_date:String,
+    created_date:Date,
+    updated_date:Date,
+    due_date:Date,
     
 })
 

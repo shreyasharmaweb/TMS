@@ -16,6 +16,10 @@ export default function UserOrg(props) {
   console.log(filteredUsers);
   console.log(props.orgName);
   console.log('orgName prop:', props);
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
     <>
     <h1>Users for Organization: {props.orgName}</h1>
@@ -28,8 +32,8 @@ export default function UserOrg(props) {
               <div className='Orgee'>
               <h2 key={i}>{user.first_name}</h2>
               <h2>{user.last_name}</h2>
-          <label>DOB:</label>    <h2>{user.dob}</h2>
-             <label>Joining date:</label> <h2>{user. org_join_date}</h2>
+          <label>DOB:</label>    <h2>{formatDate(user.dob)}</h2>
+             <label>Joining date:</label> <h2>{formatDate(user. org_join_date)}</h2>
               {/* <li>{user.}</li> */}
               </div>
             ))
