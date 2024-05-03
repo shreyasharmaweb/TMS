@@ -40,6 +40,14 @@
     width: 300px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
   }
+  .Orgee {
+    margin-bottom: 20px; 
+    padding: 10px; 
+    background-color: #735878; 
+    border-radius: 5px; 
+    width: 300px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+  }
   
   
   .NavLink {
@@ -80,19 +88,23 @@
   /* AllUsers.css */
 
 .AllUserss {
-  background-color: #e0f2f1; 
+  background-color: #806384; 
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   margin-bottom: 20px;
   padding: 15px;
   transition: transform 0.2s ease-in-out; 
 
- 
+
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
+.usermain{
+  display: flex;
+  gap:20px;
+  flex-wrap: wrap;
+ }
 .AllUserss:hover {
   transform: translateY(-5px); 
 }

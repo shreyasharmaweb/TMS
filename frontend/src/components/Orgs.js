@@ -65,15 +65,17 @@ export default function Orgs() {
   }
 
   const Add = (name) => {
-    navigate('/Userorg', { state: { orgName: name } });
+    navigate(`/UserOrg/${name}`, { state: { orgName: name } });
   }
   
 
   return (
-    <div >
-      <h1>Organisations</h1>
+    <>
+    <h1>Organisations</h1>
+    <div className='usermain' >
+      
         <div className='Orge'>
-          <h2>Adding more Organisations </h2>
+          <h1>Adding more Organisations </h1>
         <NavLink className='nav' to='/Orgnew'>ADD</NavLink>
         </div>
       {data.map((e,i) => (
@@ -86,11 +88,12 @@ export default function Orgs() {
           </ul>
           <button onClick={()=>deletee(e._id)}>Deactivate</button>
           <br/>
-          <button onClick={() => Add(e._id)}>Users</button>
-         
+          <button onClick={() => Add(e.name)}>Users</button>
+          {/* <span>{e.name}</span> */}
         </li>
         </div>
       ))}
     </div>
+    </>
   );
 }

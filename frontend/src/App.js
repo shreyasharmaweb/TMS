@@ -18,7 +18,7 @@ function App() {
         <Route path="Organitional_user" element={<OrganisationUser/>}/>
         <Route path="/Userform/:key" element={<Userform />}/>
         <Route  path="/Allusers" element={<AllUsers />}/>
-        <Route  path="/UserOrg" element={<UserOrg />}/>
+        <Route  path="/UserOrg/:id" element={<UserOrg />}/>
       </Routes>
     </Router>
     

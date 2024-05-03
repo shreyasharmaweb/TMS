@@ -11,7 +11,7 @@ const TMSTicketSchema=new Schema({
     created_date:String,
     updated_date:String,
     due_date:String,
-    file_type:String
+    
 })
 
 const TMSTicket=mongoose.model("TMSTicket",TMSTicketSchema);

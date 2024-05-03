@@ -13,7 +13,7 @@ export default function AllUsers() {
     };
     //id,email_id,first_name,last_name,dob,org_join_date
   return (
-    <div>
+    <div >
         {/* {console.log(users)}
         */}
         <h1 className='all_user'>Users</h1>

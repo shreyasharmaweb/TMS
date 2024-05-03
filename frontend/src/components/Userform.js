@@ -41,10 +41,10 @@ const Userform = () => {
   };
 
   return (
-    <div>
-      <h2>Userform</h2>
-      <p>Key: {key}</p>
-      <form onSubmit={handleSubmit}>
+    <div className='userFormContainer'>
+      {/* <h2>Userform</h2> */}
+      {/* <p>Key: {key}</p> */}
+      <form className='userForm' onSubmit={handleSubmit}>
         <div>
           <label>Email:</label>
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />

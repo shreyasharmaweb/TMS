@@ -8,7 +8,7 @@ app.post("/signup", async (req, res) => {
     res.status(201).json(newOrgUser);
 });
 app.get("/Allusers",async(req,res)=>{
-    console.log("HEYY")
+    // console.log("HEYY")
     try{
         const org=await OrganisationUser.find({});
         console.log(org)
