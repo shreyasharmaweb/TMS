@@ -20,7 +20,7 @@ function App() {
         <Route path="/Userform/:key" element={<Userform />}/>
         <Route  path="/Allusers" element={<AllUsers />}/>
         <Route  path="/UserOrg/:id" element={<UserOrg />}/>
-        <Route  path="/tms/:id" element={<TMS/>}/>
+        <Route  path="/tms/:id/:name" element={<TMS/>}/>
       </Routes>
     </Router>
     

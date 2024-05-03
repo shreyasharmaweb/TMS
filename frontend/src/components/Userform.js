@@ -34,7 +34,7 @@ const Userform = () => {
         org_join_date: orgJoinDate
       });
       console.log("done", response);
-      navigate(`/tms/${org}`);
+      navigate(`/tms/${org}/${firstName}`);
     } catch (error) {
       console.error("Error:", error);
     }
