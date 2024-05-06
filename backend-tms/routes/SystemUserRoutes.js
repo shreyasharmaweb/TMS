@@ -1,46 +1,72 @@
 const express=require('express');
 const app=express.Router();
-const expressAsyncHandler=require("express-async-handler")
 const SystemUser=require('../models/SystemUser');
 const OrganisationUser = require('../models/OrganisationUser')
 const nodemailer =require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secure: false, 
+  service: "Gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
-    user: process.env.SMTP_MAIL,
-    pass: process.env.SMTP_PASSWORD,
+    user: "shreyasharma7051@gmail.com",
+    pass: "jvcmyavhiwdpvzai",
   },
+
 });
 
-const sendEmail=expressAsyncHandler(
-  async (req,res)=>{
-    const {email,otp}=req.body;
+const sendEmail=
+   async (email)=>{
+    
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    
+    // const user = await OrganisationUser.findOne({ email_id });
+    const user = await SystemUser.findOne({ email });
+    user.otp = otp;
 
+
+    // SystemUser.otp = otp;
+    await user.save();
+
+    console.log("Inside mail")
     var mailOptions={
-      from:process.env.SMTP_MAIL,
+      from:"shreyasharma7051@gmail.com",
       to:email,
-      otp:otp,
+      text:`Your OTP is ${otp}`,
 
     }
-  
+     
     transporter.sendMail(mailOptions,function(err,info){
        if(err){
         console.log(err);
        }
     })
 
-})
+}
 
 app.post('/signup',async (req,res)=>{
-    const {email,otp}=req.body;
-    const Sys=new SystemUser({email,otp});
-    sendEmail(email, otp);
+    const {email}=req.body;
+    const Sys=new SystemUser({email});
+    console.log(Sys);
     await Sys.save();
+    await sendEmail(email);
+   
     res.status(201).json(Sys);
 })
 
+app.post('/otp',async(req,res)=>{
+    const{email,otp}=req.body;
+    const user = await SystemUser.findOne({ email });
 
+    if (!user) {
+      return res.status(404).json({ valid: false, message: 'User not found' });
+    }
+    
+    if (user.otp == otp) {
+      return res.status(200).json({ valid: true, message: 'OTP is valid' });
+    }
+    else return res.status(400).json({ valid: false, message: 'Invalid or expired OTP'});
+  
+  });
   module.exports=app;

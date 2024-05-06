@@ -1,0 +1,69 @@
+* {
+    margin-bottom: 12px;
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  
+  .tmsForm {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 50px;
+    background-color: #866f8b;
+    border-radius: 8%;
+    width: 100%;
+  }
+  
+  .tmsForm form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .tmsHeader {
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  .task,
+  .assign,
+  .reporter,
+  .created,
+  .updated,
+  .due,
+  .status {
+    margin-top: 2%;
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+  }
+  
+  .tmstext {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .text {
+    width: calc(50% - 10px);
+    margin: 10px;
+    height: 100px;
+  }
+  
+  .tmsSelector,
+  .status select,
+  .created input,
+  .updated input,
+  .due input {
+    width: calc(50% - 5px);
+    padding: 10px;
+  }
+  
+  .btn {
+    width: 150px; 
+    margin-top: 55%; 
+   
+    height: 50px;
+    border-radius: 50%;
+  }
+  

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/tms.css'
 import { useParams } from 'react-router-dom';
 import{ToastContainer,toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -57,21 +58,29 @@ export default function TMS() {
   };
 
   return (<>
-    <div>
-      <form onSubmit={handleSubmit} >
-      <h1>Ticket</h1>
-      <div>
-        <select name='type' value={states.type} onChange={handleChange}>
+   <h1 className='tmsHeader'>Ticket Generate</h1>
+    <div className='tmsForm'>
+      <form onSubmit={handleSubmit}  >
+     
+      <div className='task'>
+        <h1 className='ty'>Type</h1>
+        <select className='tmsSelector' name='type' value={states.type} onChange={handleChange}>
           <option>Task</option>
           <option>Story</option>
           <option>Bug</option>
         </select>
       </div>
-      <div>
-        <input type="text" name='description' value={states.description}  placeholder="Description" onChange={ handleChange} />
-        <input type="text" name='summary' value={states.summary} placeholder='Summary' onChange={ handleChange} />
+      <div className='tmstext'>
+        <div>
+        <h1>Description</h1>
+        <input type="text" className='text' name='description' value={states.description}   onChange={ handleChange} />
+        </div>
+        <div>
+        <h1>Summary</h1>
+        <input type="text" className='text' name='summary' value={states.summary}  onChange={ handleChange} />
+        </div>
       </div>
-      <div>
+      <div className='assign' >
         <h1>Assignee</h1>
         <select name='assignee' value={states.assignee} onChange={handleChange}>
           {filteredUsers && filteredUsers.length > 0 ? (
@@ -83,32 +92,35 @@ export default function TMS() {
           )}
         </select>
       </div>
-      <div>
+      <div className='reporter'>
         <h1>Reporter</h1>
         <select name='reporter' value={states.reporter} onChange={handleChange}>
           <option>{name}</option>
         </select>
       </div>
-      <div>  
+      <div className='created'>  
              <label>Created Date  </label>
              <input type='date' name='created_date' value={states.created_date} onChange={ handleChange}/>
       </div>
-      <div>  
+      <div className='updated'>  
              <label>Updated Date  </label>
              <input type='date' name='updated_date' value={states.updated_date} onChange={ handleChange}/>
       </div>
-      <div>  
+      <div className='due'>  
              <label>Due Date</label>
              <input type='date' name='due_date' value={states.due_date} onChange={ handleChange}/>
       </div>
-      <div>
+      <div className='status'>
+        <h1>Status</h1>
         <select name='status' value={states.status} onChange={handleChange}>
           <option >Completed</option>
           <option>Pending</option>
           <option>Incomplete</option>
         </select>
       </div>
-      <button type="submit">Submit</button>
+      <div >
+      <button className='btn' type="submit">Submit</button>
+      </div>
       </form>
     </div>
     <ToastContainer position="top-right" />
